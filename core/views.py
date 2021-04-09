@@ -6,9 +6,15 @@ from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated, I
 from .permissions import IsAdminOrReadOnly
 from django.db.models import Q
 import datetime
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
 
 from .serializers import FactSerializer
 from .models import Fact
+
+
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
 
 
 class FactAPIViewSet(viewsets.ModelViewSet):
