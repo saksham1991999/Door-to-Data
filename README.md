@@ -1,20 +1,6 @@
 # doortodata
 
 Door to your Personal Data
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 ## 🧐 Inspiration
 We have heard of the news about our data being used and sold to companies without our permission. What if we have a way to see how and what data are being used and tracked through our social media accounts and from multiple different platforms such as YouTube and Google. We came up with a solution to collect and visualize our own data in an application and have management over our own data.
 
@@ -37,3 +23,8 @@ We have learned Flutter and Python.
 
 ## ⏭ What's next for Door to Data
 Add more companies to the list where the user can get their data to show it on the application and have control over them. 
+
+## Contributors
+- [MYAT THU KO](https://www.linkedin.com/in/myatthuko13/)
+- [SAKSHAM MITTAL](https://www.linkedin.com/in/sakshammittal/)
+- [DANIEL OLATOYE](https://www.linkedin.com/in/daniel-olatoye/)
