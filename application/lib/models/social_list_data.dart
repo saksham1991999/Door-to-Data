@@ -27,7 +27,7 @@ class SocialListData {
     SocialListData(
       imagePath: 'assets/socialapps/fb.png',
       titleTxt: 'Facebook',
-      kacl: 602,
+      kacl: 0,
       meals: <String>['Location,', 'Search', 'Ads'],
       startColor: '#738AE6',
       endColor: '#5C5EDD',

@@ -1,4 +1,4 @@
-import 'package:doortodata/pages/blog/blog_screen.dart';
+import 'package:doortodata/pages/facts/blog_screen.dart';
 import 'package:doortodata/pages/onboarding/login_screen.dart';
 import 'package:doortodata/pages/onboarding/signup_screen.dart';
 import 'package:doortodata/pages/onboarding/welcome_screen.dart';

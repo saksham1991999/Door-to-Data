@@ -1,9 +1,10 @@
 
+import 'package:doortodata/pages/know_more/know_more_screen.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/bottom_navigation_view/bottom_bar.dart';
 import '../../constants.dart';
 import '../../models/tabIcon_data.dart';
-import '../blog/blog_screen.dart';
+import '../facts/blog_screen.dart';
 import '../profile/menu_options_screen.dart';
 import '../socialapps/socialapps_screen.dart';
 
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen>
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -99,6 +100,16 @@ class _HomeScreenState extends State<HomeScreen>
                 setState(() {
                   tabBody =
                       BlogsScreen();
+                });
+              });
+            } else if (index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      KnowMoreScreen();
                 });
               });
             } else if (index == 3) {
