@@ -9,7 +9,7 @@ import 'dart:convert';
 class ApiHelper {
   final String _userIDStorageKey = 'USER_ID';
   final String _authTokenStorageKey = 'AUTH_TOKEN';
-  final String _baseUrl = 'www.homeplanify.com'; //'36eb00ef8692.ngrok.io'
+  final String _baseUrl = 'www.doortodata.herokuapp.com';
 
   static String _authToken;
   static String _userID;

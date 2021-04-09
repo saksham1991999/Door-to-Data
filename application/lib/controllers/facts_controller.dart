@@ -7,8 +7,8 @@ import '../models/facts.dart';
 
 
 class FactsController extends GetxController with StateMixin<List<dynamic>>{
-  List<Fact> facts;
 
+  final facts = RxList<Fact>([]);
 
   @override
   void onInit(){
@@ -18,10 +18,10 @@ class FactsController extends GetxController with StateMixin<List<dynamic>>{
 
 
 
-  Future<ApiResponse> fetchProducts() async {
+  Future<ApiResponse> fetchFacts() async {
     ApiResponse response;
     response =await ApiHelper().getRequest(
-      endpoint: eMyProperties,
+      endpoint: eFacts,
     );
 
     if(!response.error){
