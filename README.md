@@ -1,6 +1,5 @@
-# doortodata
+# Door to Data
 
-Door to your Personal Data
 ## 🧐 Inspiration
 We have heard of the news about our data being used and sold to companies without our permission. What if we have a way to see how and what data are being used and tracked through our social media accounts and from multiple different platforms such as YouTube and Google. We came up with a solution to collect and visualize our own data in an application and have management over our own data.
 
