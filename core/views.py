@@ -6,6 +6,10 @@ from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated, I
 from .permissions import IsAdminOrReadOnly
 from django.db.models import Q
 import datetime
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
+from rest_auth.registration.views import SocialConnectView
+from rest_auth.social_serializers import TwitterConnectSerializer
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
 
@@ -15,6 +19,15 @@ from .models import Fact
 
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
+
+
+class FacebookConnect(SocialConnectView):
+    adapter_class = FacebookOAuth2Adapter
+
+
+class TwitterConnect(SocialConnectView):
+    serializer_class = TwitterConnectSerializer
+    adapter_class = TwitterOAuthAdapter
 
 
 class FactAPIViewSet(viewsets.ModelViewSet):
