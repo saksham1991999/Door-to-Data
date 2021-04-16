@@ -23,7 +23,7 @@ class FactsController extends GetxController {
     try {
       isLoading(true);
       ApiResponse response;
-      response =await ApiHelper().getRequest(
+      response =await ApiHelper().getWithoutAuthRequest(
         endpoint: eFacts,
       );
       if(!response.error){
