@@ -1,8 +1,13 @@
 import 'package:doortodata/constants.dart';
 import 'package:doortodata/controllers/facts_controller.dart';
 import 'package:doortodata/main.dart';
+import 'package:doortodata/models/facts.dart';
+import 'package:doortodata/utils/api-response.dart';
+import 'package:doortodata/utils/api_endpoints.dart';
+import 'package:doortodata/utils/api_helper.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import '../../widgets/ui_view/area_list_view.dart';
 import '../../widgets/ui_view/running_view.dart';
 import '../../widgets/ui_view/title_view.dart';
@@ -10,8 +15,36 @@ import '../../widgets/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
 
-class BlogsScreen extends StatelessWidget {
+class BlogsScreen extends StatefulWidget {
+  @override
+  _BlogsScreenState createState() => _BlogsScreenState();
+}
+
+class _BlogsScreenState extends State<BlogsScreen> {
   final FactsController factController = Get.put(FactsController());
+  List<Fact> factsList;
+
+  Future<void> getJsonData() async {
+
+    ApiResponse response;
+    response = await ApiHelper().getWithoutAuthRequest(
+      endpoint: eFacts,
+    );
+    if(!response.error){
+      setState(
+      () {
+        List<Fact> facts = response.data.map<Fact>((e)=>Fact.fromJson(e)).toList();
+        factsList = facts;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.getJsonData();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +57,14 @@ class BlogsScreen extends StatelessWidget {
             backgroundColor: DoorToDataAppTheme.nearlyDarkBlue,
           ),
           backgroundColor: Colors.transparent,
-          body: Obx((){
-            if (factController.isLoading.value)
-              return Center(child: CircularProgressIndicator());
-            else
-              return Stack(
+          body: Stack(
                 children: <Widget>[
                   ListView.builder(
-                    itemCount: 3,
+                    itemCount: factsList == null ? 0: factsList.length,
                     // itemCount: factController.factsList.length,
                     itemBuilder: (context, index){
                       return
-                        BlogListRow();
+                        BlogListRow(fact: factsList[index]);
 
                         // Padding(
                         //   padding: const EdgeInsets.only(
@@ -100,16 +129,17 @@ class BlogsScreen extends StatelessWidget {
                         // );
                     },
                   )
-                ]);
-            }),
+                ])
+
       ),
     );
   }
-
 }
 
 class BlogListRow extends StatelessWidget {
+  Fact fact;
 
+  BlogListRow({this.fact});
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +171,7 @@ class BlogListRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Facebook',
+                fact.category,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontFamily: DoorToDataAppTheme.fontName,
@@ -154,7 +184,7 @@ class BlogListRow extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
-                  'FaceBook collects locations everytime you use it.',
+                  fact.fact,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontFamily: DoorToDataAppTheme.fontName,
